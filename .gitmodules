@@ -4,6 +4,6 @@
 	branch = master
 
 [submodule "src/ga"]
-	path = src/ga
+	path = gridpack/ga
 	url = https://github.com/wperkins/ga.git
         branch = for-gridpack
