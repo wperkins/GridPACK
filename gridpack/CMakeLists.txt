@@ -10,7 +10,7 @@
 # -------------------------------------------------------------
 # -------------------------------------------------------------
 # Created May  3, 2013 by William A. Perkins
-# Last Change: 2019-11-14 06:49:07 d3g096
+# Last Change: 2020-05-21 08:27:10 d3g096
 # -------------------------------------------------------------
 
 # 
@@ -431,7 +431,7 @@ endif()
 set(GRIDPACK_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(GRIDPACK_DATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/applications/data_sets)
 
-include_directories(BEFORE ${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(BEFORE ${GridPACK_SOURCE_DIR}/.. ${GridPACK_SOURCE_DIR})
 if (ENABLE_CRAY_BUILD)
   if (NOT ${MPI_LIBRARY} OR NOT ${MPI_EXTRA_LIBRARY})
     set(MPI_LIBRARY "")
