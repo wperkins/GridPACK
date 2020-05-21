@@ -10,7 +10,7 @@
 # -------------------------------------------------------------
 # -------------------------------------------------------------
 # Created May  3, 2013 by William A. Perkins
-# Last Change: 2020-05-21 08:27:10 d3g096
+# Last Change: 2020-05-21 08:36:35 d3g096
 # -------------------------------------------------------------
 
 # 
@@ -200,6 +200,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     -Wno-unused-variable
     -Wno-unused-but-set-variable
     -Wno-maybe-uninitialized
+    -Werror=vla
     )
 endif()
 
@@ -210,6 +211,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     -Wno-c++11-compat-deprecated-writable-strings
     -Wno-format-security
     -DGRIDPACK_AVOID_APPLECLANG_MPI_PROBLEMS=1
+    -Werror=vla
     )
 endif()
 
