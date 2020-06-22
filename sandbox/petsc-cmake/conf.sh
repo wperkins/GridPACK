@@ -34,17 +34,26 @@ if [ $host == "flophouse" ]; then
     
 elif [ $host == "WE32673" ]; then
 
-    # Mac using Clang (system default) with OpenMPI and PETSc using
-    # MacPorts (do not set PETSC_ARCH)
-
-    CC=/usr/bin/clang
+    CC=/opt/local/bin/clang
     export CC
-    CXX=/usr/bin/clang++
+    CXX=/opt/local/bin/clang++
     export CXX
+
+    prefix="/Users/d3g096/Projects/GridPACK"
+
+    if [ "$shared"x = "ON"x ]; then
+        pdir="$prefix/petsc-3.8.4" 
+        parch="arch-macosx-clang-real-shared-c" 
+    else
+        pdir="$prefix/petsc-3.8.4"
+        parch="arch-macosx-clang-real-opt"
+        parch="arch-macosx-clang-complex-opt"
+    fi
 
     cmake -Wno-dev \
         -D Boost_DIR:STRING='/opt/local' \
-        -D PETSC_DIR:STRING="/opt/local/lib/petsc" \
+        -D PETSC_DIR:STRING="$pdir" \
+        -D PETSC_ARCH:STRING="$parch" \
         -D MPI_CXX_COMPILER:STRING='/opt/local/bin/mpicxx' \
         -D MPI_C_COMPILER:STRING='/opt/local/bin/mpicc' \
         -D MPIEXEC:STRING='/opt/local/bin/mpiexec' \
