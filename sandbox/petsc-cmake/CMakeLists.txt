@@ -1,6 +1,8 @@
 # -*- mode: cmake -*-
 
 cmake_minimum_required (VERSION 2.6.4)
+# On Windoze, initial compiler options need to be changed
+set (CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_CURRENT_LIST_DIR}/CompilerOptions.cmake")
 project (PETScTest)
 
 list (APPEND CMAKE_MODULE_PATH 
@@ -8,10 +10,11 @@ list (APPEND CMAKE_MODULE_PATH
 
 # This is a C++ project exclusively
 enable_language(CXX)
+message(STATUS "CMAKE_C_FLAGS_DEBUG: ${CMAKE_C_FLAGS_DEBUG}")
+message(STATUS "CMAKE_CXX_FLAGS_DEBUG: ${CMAKE_CXX_FLAGS_DEBUG}")
 
 # Do some tests
 enable_testing()
-
 
 # -------------------------------------------------------------
 # MPI
@@ -31,7 +34,10 @@ else()
    )
   endif()
 endif()
+message(STATUS "MPI_CXX_INCLUDE_DIRS: ${MPI_CXX_INCLUDE_DIRS}")
+message(STATUS "MPI_CXX_HEADER_DIR: ${MPI_CXX_HEADER_DIR}")
 message(STATUS "MPI_CXX_LIBRARIES: ${MPI_CXX_LIBRARIES}")
+include_directories (${MPI_CXX_INCLUDE_DIRS})
 
 # -------------------------------------------------------------
 # Boost
