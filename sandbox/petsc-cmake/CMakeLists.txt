@@ -1,6 +1,6 @@
 # -*- mode: cmake -*-
 
-cmake_minimum_required (VERSION 2.6.4)
+cmake_minimum_required (VERSION 2.8.8)
 # On Windoze, initial compiler options need to be changed
 set (CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_CURRENT_LIST_DIR}/CompilerOptions.cmake")
 project (PETScTest)
@@ -22,18 +22,6 @@ enable_testing()
 message(STATUS "Checking MPI ...")
 find_package (MPI REQUIRED)
 
-# This is here for cmake version 2.6 
-if (NOT MPI_LIBRARY OR NOT MPI_EXTRA_LIBRARY)
-# Punt if MPI_LIBRARY or MPI_EXTRA_LIBRARY not found
-  set(MPI_CXX_LIBRARIES "")
-else()
-  if (NOT MPI_CXX_LIBRARIES)
-   set(MPI_CXX_LIBRARIES 
-     ${MPI_LIBRARY} 
-     ${MPI_EXTRA_LIBRARY}
-   )
-  endif()
-endif()
 message(STATUS "MPI_CXX_INCLUDE_DIRS: ${MPI_CXX_INCLUDE_DIRS}")
 message(STATUS "MPI_CXX_HEADER_DIR: ${MPI_CXX_HEADER_DIR}")
 message(STATUS "MPI_CXX_LIBRARIES: ${MPI_CXX_LIBRARIES}")
@@ -75,13 +63,9 @@ if (NOT PETSC_HAVE_MPI)
 endif()
 
 if (NOT PETSC_USE_COMPLEX) 
-  message (FATAL_ERROR "PETSc installation does not use complex (--with-scalar-type=complex)")
+  message (WARNING "PETSc installation does not use complex (--with-scalar-type=complex)")
 endif()
 
-# This is probably redundant
-if (NOT PETSC_CLANGUAGE_Cxx)
-  message (FATAL_ERROR "PETSc installation does not use C++ (--with-clanguage=c++)")
-endif()
 
 # -------------------------------------------------------------
 # Options for all Programs
@@ -92,8 +76,10 @@ add_definitions (${PETSC_DEFINITIONS})
 # -------------------------------------------------------------
 # Programs
 # -------------------------------------------------------------
-add_executable(vwrap vwrap.cpp)
-target_link_libraries(vwrap ${PETSC_LIBRARIES} ${Boost_LIBRARIES} ${MPI_CXX_LIBRARIES})
+if (PETSC_USE_COMPLEX)
+  add_executable(vwrap vwrap.cpp)
+  target_link_libraries(vwrap ${PETSC_LIBRARIES} ${Boost_LIBRARIES} ${MPI_CXX_LIBRARIES})
+endif()
 
 add_executable(vecdist vecdist.cpp)
 target_link_libraries(vecdist ${PETSC_LIBRARIES} ${Boost_LIBRARIES} ${MPI_CXX_LIBRARIES})
