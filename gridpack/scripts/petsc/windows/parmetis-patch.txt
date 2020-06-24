@@ -1,0 +1,79 @@
+diff -aur parmetis-4.0.3.orig/CMakeLists.txt parmetis-4.0.3/CMakeLists.txt
+--- parmetis-4.0.3.orig/CMakeLists.txt	2013-03-30 09:24:50.000000000 -0700
++++ parmetis-4.0.3/CMakeLists.txt	2020-05-29 09:14:09.802214400 -0700
+@@ -15,6 +15,7 @@
+ #   message(FATAL_ERROR "mpi is not found")
+ # endif()
+ # set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MPI_COMPILE_FLAGS}")
++find_package(MPI REQUIRED)
+ 
+ # Prepare libraries.
+ if(SHARED)
+@@ -33,6 +34,7 @@
+ include_directories(${METIS_PATH}/include)
+ 
+ # List of directories that cmake will look for CMakeLists.txt
++add_subdirectory(${METIS_PATH}/include)
+ add_subdirectory(${METIS_PATH}/libmetis ${CMAKE_BINARY_DIR}/libmetis)
+ add_subdirectory(include)
+ add_subdirectory(libparmetis)
+diff -aur parmetis-4.0.3.orig/metis/GKlib/gk_arch.h parmetis-4.0.3/metis/GKlib/gk_arch.h
+--- parmetis-4.0.3.orig/metis/GKlib/gk_arch.h	2013-03-30 09:24:50.000000000 -0700
++++ parmetis-4.0.3/metis/GKlib/gk_arch.h	2020-05-29 09:31:24.371964000 -0700
+@@ -58,14 +58,6 @@
+ #define PTRDIFF_MAX  INT64_MAX
+ #endif
+ 
+-#ifdef __MSC__
+-/* MSC does not have rint() function */
+-#define rint(x) ((int)((x)+0.5))  
+ 
+-/* MSC does not have INFINITY defined */
+-#ifndef INFINITY
+-#define INFINITY FLT_MAX
+-#endif
+-#endif
+ 
+ #endif
+diff -aur parmetis-4.0.3.orig/metis/include/metis.h parmetis-4.0.3/metis/include/metis.h
+--- parmetis-4.0.3.orig/metis/include/metis.h	2013-03-30 09:24:50.000000000 -0700
++++ parmetis-4.0.3/metis/include/metis.h	2020-05-29 09:14:09.817228400 -0700
+@@ -40,7 +40,7 @@
+    32 : single precission floating point (float)
+    64 : double precission floating point (double)
+ --------------------------------------------------------------------------*/
+-#define REALTYPEWIDTH 32
++#define REALTYPEWIDTH 64
+ 
+ 
+ 
+diff -aur parmetis-4.0.3.orig/metis/libmetis/metislib.h parmetis-4.0.3/metis/libmetis/metislib.h
+--- parmetis-4.0.3.orig/metis/libmetis/metislib.h	2013-03-30 09:24:50.000000000 -0700
++++ parmetis-4.0.3/metis/libmetis/metislib.h	2020-05-29 09:27:28.864127700 -0700
+@@ -31,11 +31,4 @@
+ #include <proto.h>
+ 
+ 
+-#if defined(COMPILER_MSC)
+-#if defined(rint)
+-  #undef rint
+-#endif
+-#define rint(x) ((idx_t)((x)+0.5))  /* MSC does not have rint() function */
+-#endif
+-
+ #endif
+diff -aur parmetis-4.0.3.orig/metis/programs/metisbin.h parmetis-4.0.3/metis/programs/metisbin.h
+--- parmetis-4.0.3.orig/metis/programs/metisbin.h	2013-03-30 09:24:50.000000000 -0700
++++ parmetis-4.0.3/metis/programs/metisbin.h	2020-05-29 09:30:27.319497900 -0700
+@@ -43,10 +43,4 @@
+ extern char* strdup (const char *);
+ #endif
+ 
+-#if defined(COMPILER_MSC)
+-#if defined(rint)
+-  #undef rint
+-#endif
+-#define rint(x) ((idx_t)((x)+0.5))  /* MSC does not have rint() function */
+-#define __func__ "dummy-function"
+-#endif
++
