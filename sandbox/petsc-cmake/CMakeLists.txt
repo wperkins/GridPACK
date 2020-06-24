@@ -2,7 +2,8 @@
 
 cmake_minimum_required (VERSION 2.8.8)
 # On Windoze, initial compiler options need to be changed
-set (CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_CURRENT_LIST_DIR}/CompilerOptions.cmake")
+set (CMAKE_USER_MAKE_RULES_OVERRIDE
+  "${CMAKE_CURRENT_LIST_DIR}/../../gridpack/cmake-modules/CompilerOptions.cmake")
 project (PETScTest)
 
 list (APPEND CMAKE_MODULE_PATH 

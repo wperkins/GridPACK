@@ -10,11 +10,16 @@
 # -------------------------------------------------------------
 # -------------------------------------------------------------
 # Created May  3, 2013 by William A. Perkins
-# Last Change: 2020-05-21 08:36:35 d3g096
+# Last Change: 2020-06-24 14:10:12 d3g096
 # -------------------------------------------------------------
 
 # 
 cmake_minimum_required (VERSION 3.3.0)
+
+# Some platforms (Windoze) require changing compiler flags before we
+# do anything else
+set (CMAKE_USER_MAKE_RULES_OVERRIDE
+  "${CMAKE_CURRENT_LIST_DIR}/cmake-modules/CompilerOptions.cmake")
 
 # This allows the use of LOCATION(target)
 if (POLICY CMP0026)
