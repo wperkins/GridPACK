@@ -1744,7 +1744,7 @@ void setXCBusBuffer(int idx, void* ptr)
     char buf[256];
     if (idx < 0 || idx >= p_buses.size()) {
       sprintf(buf,"BaseNetwork::setXCBusBuffer: illegal index: %d size: %ld\n",
-              idx, p_buses.size());
+              idx, static_cast<long>(p_buses.size()));
     } else if (p_busXCBuffers == NULL) {
       sprintf(buf,"BaseNetwork::setXCBusBuffer: buffer already assigned\n");
     }
@@ -1763,7 +1763,7 @@ void* getXCBusBuffer(int idx)
   if (idx < 0 || idx > p_buses.size()) {
     char buf[256];
     sprintf(buf,"BaseNetwork::getXCBusBuffer: illegal index: %d size: %ld\n",
-            idx, p_buses.size());
+            idx, static_cast<long>(p_buses.size()));
     printf("%s",buf);
     throw gridpack::Exception(buf);
   } else {
@@ -1845,7 +1845,7 @@ void* getXCBranchBuffer(int idx)
   if (idx < 0 || idx > p_branches.size()) {
     char buf[256];
     sprintf(buf,"BaseNetwork::getXCBranchBuffer: illegal index: %d size: %ld\n",
-      idx, p_branches.size());
+      idx, static_cast<long>(p_branches.size()));
     printf("%s",buf);
     throw gridpack::Exception(buf);
   } else {
@@ -1896,7 +1896,7 @@ void setXCBranchBuffer(int idx, void* ptr)
     char buf[256];
     if (idx < 0 || idx >= p_branches.size()) {
       sprintf(buf,"BaseNetwork::setXCBranchBuffer: illegal index: %d size: %ld\n",
-        idx, p_branches.size());
+        idx, static_cast<long>(p_branches.size()));
     } else {
       sprintf(buf,"BaseNetwork::setXCBranchBuffer: buffer already assigned\n");
     }

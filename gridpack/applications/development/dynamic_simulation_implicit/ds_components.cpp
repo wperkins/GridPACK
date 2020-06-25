@@ -572,6 +572,7 @@ void gridpack::dsimplicit::DSBus::setValues(gridpack::ComplexType *values)
 bool gridpack::dsimplicit::DSBus::serialWrite(char *string,
     const int bufsize, const char *signal)
 {
+  return false;
 }
 
 /**

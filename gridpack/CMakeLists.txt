@@ -220,6 +220,13 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     )
 endif()
 
+# disable the annoying max/min macros in Windoze
+if (WIN32)
+   add_definitions(/D NOMINMAX)
+   if (MSVC)
+      add_definitions(/D _CRT_SECURE_NO_WARNINGS /wd4267)
+   endif(MSVC)
+endif (WIN32)
 
 # When built as shared libraries, and installed in non-system dirs, deal with RPATH
 if(BUILD_SHARED_LIBS)
