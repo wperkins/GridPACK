@@ -107,7 +107,7 @@ template VectorT<RealType>::VectorT(const parallel::Communicator& comm,
  */
 template <typename T, typename I>
 void
-VectorT<T, I>::add(const VectorT<T, I>& x, const VectorT<T, I>::TheType& scale)
+VectorT<T, I>::add(const VectorT<T, I>& x, const typename VectorT<T, I>::TheType& scale)
 {
   this->p_checkCompatible(x);
   
@@ -136,7 +136,7 @@ template void VectorT<RealType>::add(const VectorT<RealType>& x,
 
 template <typename T, typename I>
 void
-VectorT<T, I>::add(const VectorT<T, I>::TheType& x)
+VectorT<T, I>::add(const typename VectorT<T, I>::TheType& x)
 {
   if (PETScVectorImplementation<T, I>::useLibrary) {
     Vec *vec(PETScVector(*this));

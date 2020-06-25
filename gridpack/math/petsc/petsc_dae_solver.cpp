@@ -33,9 +33,9 @@ namespace math {
 template <typename T, typename I>
 DAESolverT<T, I>::DAESolverT(const parallel::Communicator& comm, 
                              const int local_size,
-                             DAESolverT<T, I>::JacobianBuilder& jbuilder,
-                             DAESolverT<T, I>::FunctionBuilder& fbuilder,
-                             DAESolverT<T, I>::EventManagerPtr eman)
+                             typename DAESolverT<T, I>::JacobianBuilder& jbuilder,
+                             typename DAESolverT<T, I>::FunctionBuilder& fbuilder,
+                             typename DAESolverT<T, I>::EventManagerPtr eman)
   : parallel::WrappedDistributed(),
     utility::WrappedConfigurable(),
     utility::Uncopyable(),
@@ -63,8 +63,8 @@ DAESolverT<RealType>::DAESolverT(const parallel::Communicator& comm,
 template <typename T, typename I>
 DAESolverT<T, I>::DAESolverT(const parallel::Communicator& comm, 
                              const int local_size,
-                             DAESolverT<T, I>::JacobianBuilder& jbuilder,
-                             DAESolverT<T, I>::FunctionBuilder& fbuilder)
+                             typename DAESolverT<T, I>::JacobianBuilder& jbuilder,
+                             typename DAESolverT<T, I>::FunctionBuilder& fbuilder)
   : parallel::WrappedDistributed(),
     utility::WrappedConfigurable(),
     utility::Uncopyable(),

@@ -31,7 +31,7 @@ namespace math {
 // LinearMatrixSolver:: constructors / destructor
 // -------------------------------------------------------------
 template <typename T, typename I>
-LinearMatrixSolverT<T, I>::LinearMatrixSolverT(LinearMatrixSolverT<T, I>::MatrixType& A)
+LinearMatrixSolverT<T, I>::LinearMatrixSolverT(typename LinearMatrixSolverT<T, I>::MatrixType& A)
   : BaseLinearMatrixSolverInterface<T, I>(),
     parallel::WrappedDistributed(),
     utility::WrappedConfigurable(),

@@ -32,8 +32,8 @@ namespace math {
 template <typename T, typename I>
 NonlinearSolverT<T, I>::NonlinearSolverT(const parallel::Communicator& comm,
                                          const int& local_size,
-                                         NonlinearSolverT<T, I>::JacobianBuilder form_jacobian,
-                                         NonlinearSolverT<T, I>::FunctionBuilder form_function)
+                                         typename NonlinearSolverT<T, I>::JacobianBuilder form_jacobian,
+                                         typename NonlinearSolverT<T, I>::FunctionBuilder form_function)
   : NonlinearSolverInterface<T, I>(),
     parallel::WrappedDistributed(),
     utility::WrappedConfigurable(),
@@ -56,9 +56,9 @@ NonlinearSolverT<RealType>::NonlinearSolverT(const parallel::Communicator& comm,
                                              NonlinearSolverT<RealType>::FunctionBuilder form_function);
 
 template <typename T, typename I>
-NonlinearSolverT<T, I>::NonlinearSolverT(NonlinearSolverT<T, I>::MatrixType& J,
-                                         NonlinearSolverT<T, I>::JacobianBuilder form_jacobian,
-                                         NonlinearSolverT<T, I>::FunctionBuilder form_function)
+NonlinearSolverT<T, I>::NonlinearSolverT(typename NonlinearSolverT<T, I>::MatrixType& J,
+                                         typename NonlinearSolverT<T, I>::JacobianBuilder form_jacobian,
+                                         typename NonlinearSolverT<T, I>::FunctionBuilder form_function)
   : NonlinearSolverInterface<T, I>(),
     parallel::WrappedDistributed(),
     utility::WrappedConfigurable(),
