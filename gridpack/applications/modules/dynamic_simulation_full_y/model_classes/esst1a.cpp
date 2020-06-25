@@ -97,6 +97,7 @@ double gridpack::dynamic_simulation::Esst1aModel::Sat(double x)
     //double B = log(SE2 / SE1)/(E2 - E1);
     //double A = SE1 / exp(B * E1);
     //return A * exp(B * x);
+    return 0.0;
 }
 
 double gridpack::dynamic_simulation::Esst1aModel::sqr(double x)
