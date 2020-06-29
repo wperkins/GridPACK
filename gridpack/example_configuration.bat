@@ -21,7 +21,7 @@ cmake -Wdev --debug-trycompile ^
     -D PARMETIS_INCLUDE_DIR:PATH="%prefix%\include" ^
     -D PARMETIS_LIB_DIR:PATH="%prefix%\lib" ^
     -D MPIEXEC_MAX_NUMPROCS:STRING="2" ^
-    -D GRIDPACK_TEST_TIMEOUT:STRING=60 ^
+    -D GRIDPACK_TEST_TIMEOUT:STRING=20 ^
     ..
 
   
