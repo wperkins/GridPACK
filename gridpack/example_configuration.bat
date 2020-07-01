@@ -1,10 +1,9 @@
 
 set path=%path%;c:\cygwin64\bin
-set prefix="C:\GridPACK"
 set prefix="C:\Users\D3G096\gridpack"
 
-set CFLAGS="/D _ITERATOR_DEBUG_LEVEL=0"
-set CXXFLAGS="/D _ITERATOR_DEBUG_LEVEL=0"
+REM set CFLAGS="/D _ITERATOR_DEBUG_LEVEL=0"
+REM set CXXFLAGS="/D _ITERATOR_DEBUG_LEVEL=0"
 
 del /Q CMakeCache.txt CMakeFiles
 

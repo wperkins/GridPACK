@@ -1,14 +1,14 @@
 prefix="/cygdrive/c/Users/D3G096/gridpack"
-export PETSC_DIR="/cygdrive/c/Users/D3G096/gridpack/src/petsc-3.8.4"
-# export PETSC_DIR="/cygdrive/c/Users/D3G096/gridpack/src/petsc-3.10.5"
+#export PETSC_DIR="/cygdrive/c/Users/D3G096/gridpack/src/petsc-3.8.4"
+export PETSC_DIR="/cygdrive/c/Users/D3G096/gridpack/src/petsc-3.10.5"
 python ./configure \
-    PETSC_ARCH=mswin-c++-real \
+    PETSC_ARCH=mswin-c++-complex \
     --with-cc="win32fe cl" --with-fc=0 --with-cxx="win32fe cl" \
     --with-clanguage=c++ \
     --with-cxx-dialect=C++11 \
     --with-c++-support=1 \
     --with-precision=double \
-    --with-scalar-type=real \
+    --with-scalar-type=complex \
     --with-shared-libraries=0 \
     --with-debugging=0 \
     --with-mpi-include='[/cygdrive/c/PROGRA~2/MIA713~1/MPI/Include,/cygdrive/c/PROGRA~2/MIA713~1/MPI/Include/x64]' \
