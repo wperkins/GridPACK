@@ -1,9 +1,9 @@
 REM Probably needs to be done as administrator
-REM set msmpi
+REM set GridPACKDir=C:\Users\D3G096\gridpack
 REM bootstrap.bat
 REM Add "using mpi ;" to project-config.jam
 .\b2 ^
-   --prefix="C:\Users\D3G096\gridpack" ^
+   --prefix="%GridPACKDir%" ^
    --with-mpi ^
    --with-serialization ^
    --with-random ^

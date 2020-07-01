@@ -1,3 +1,4 @@
+REM set GridPACKDir=C:\Users\D3G096\gridpack
 cmake -Wdev --debug-trycompile ^
     -D BUILD_SHARED_LIBS:BOOL=OFF ^
     -G "Visual Studio 14 2015 Win64" ^
