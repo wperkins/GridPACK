@@ -1274,7 +1274,7 @@ void gridpack::dynamic_simulation::DSFullApp::setGeneratorWatch(
 {
   int ncnt = buses.size();
   if (ncnt != tags.size()) {
-    printf("setGeneratorWatch: size mismatch between buses: and tags: vectors\n",
+    printf("setGeneratorWatch: size mismatch between buses: %d and tags: %d vectors\n",
         (int)buses.size(),(int)tags.size());
     // TODO: some kind of error
   }

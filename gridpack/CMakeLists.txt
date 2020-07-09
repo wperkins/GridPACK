@@ -10,7 +10,7 @@
 # -------------------------------------------------------------
 # -------------------------------------------------------------
 # Created May  3, 2013 by William A. Perkins
-# Last Change: 2020-06-24 14:10:12 d3g096
+# Last Change: 2020-06-29 12:52:08 d3g096
 # -------------------------------------------------------------
 
 # 
@@ -202,9 +202,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     -Wno-write-strings
     -Wno-long-long 
     -Wno-sign-compare 
-    -Wno-unused-variable
     -Wno-unused-but-set-variable
-    -Wno-maybe-uninitialized
     -Werror=vla
     )
 endif()
@@ -212,6 +210,8 @@ endif()
 # using regular Clang or AppleClang
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_definitions(
+    -pedantic
+    -Wno-write-strings
     -Wno-c++11-extensions
     -Wno-c++11-compat-deprecated-writable-strings
     -Wno-format-security

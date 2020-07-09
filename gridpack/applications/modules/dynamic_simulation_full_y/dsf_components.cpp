@@ -7,7 +7,7 @@
 /**
  * @file   dsf_components.cpp
  * @author Shuangshuang Jin 
- * @date   2017-10-05 08:25:33 d3g096
+ * @date   2020-06-29 12:58:24 d3g096
  * @date   2014-03-06 15:22:00 d3m956
  * @last modified date   2015-05-13 12:01:00 d3m956
  * 
@@ -242,7 +242,8 @@ bool gridpack::dynamic_simulation::DSFullBus::matrixDiagValues(ComplexType *valu
     } else {
       return false;
     }	  
-  }	 	   
+  }
+  return false;
 }
 
 /**
@@ -651,6 +652,7 @@ double gridpack::dynamic_simulation::DSFullBus::getAngle()
     double angle = p_generators[i]->getAngle();
     return angle;
   }
+  return 0.0;
 }
 
 /**
@@ -3039,9 +3041,8 @@ gridpack::dynamic_simulation::DSFullBranch::getPosfy11YbusUpdateFactor(int sw2_2
       reti = imag(myValue);
       return gridpack::ComplexType(retr, reti);
     }
-  } else {
-    return gridpack::ComplexType(-999.0, -999.0); // return a dummy value
   }
+  return gridpack::ComplexType(-999.0, -999.0); // return a dummy value
 }
 
 gridpack::ComplexType 
